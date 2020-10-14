@@ -1,0 +1,19 @@
+# TestPipelineAnalyze.yaml
+
+trigger:
+    branches:
+      exclude:
+        - '*'
+
+stages:
+  - stage: Analyze
+    pool:
+      name: Azure Pipelines
+      vmImage: 'ubuntu-latest'
+    jobs:
+      - job: Preflight
+        displayName: Check code syntax using PSScriptAnalyzer
+        steps:
+          - task: PowerShell@2
+            inputs:
+              filePath: "PipelineAnalyze.ps1"

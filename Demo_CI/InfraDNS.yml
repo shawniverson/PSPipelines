@@ -1,0 +1,35 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  name: Demo_CIAgentPool
+
+steps:
+- task: PowerShell@2
+  inputs:
+    filePath: 'initiate.ps1'
+    arguments: '-fileName build'
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'NUnit'
+    testResultsFiles: 'InfraDNS/Tests/Results/*.xml'
+    testRunTitle: 'Unit'
+- task: CopyFiles@2
+  inputs:
+    Contents: |
+      initiate.ps1
+      **\deploy.ps1
+      **\Acceptance\**
+      **\Integration\**
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'Deploy'
+    publishLocation: 'Container'

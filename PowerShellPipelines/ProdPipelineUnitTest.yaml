@@ -1,0 +1,42 @@
+# TestPipelineAnalyze.yaml
+
+trigger:
+    branches:
+      include:
+        - 'prod'
+
+stages:
+  - stage: Test
+    pool:
+      name: Azure Pipelines
+      vmImage: 'ubuntu-latest'
+    jobs:
+      - job: UnitTests
+        steps:
+          - task: PowerShell@2
+            displayName: Run Unit Tests
+            inputs:
+              filePath: PipelineUnitTest.ps1
+              errorActionPreference: 'continue'
+          - task: PublishTestResults@2
+            displayName: Publish Unit Test Results
+            inputs:
+              testRunner: 'NUnit'
+              testResultsFiles: '**/UnitTest.xml'
+              failTaskOnFailedTests: true
+          - task: PublishCodeCoverageResults@1
+            inputs:
+              codeCoverageTool: 'JaCoCo'
+              summaryFileLocation: '**/coverage.xml'
+              pathToSources: '$(System.DefaultWorkingDirectory)'
+          - task: CopyFiles@2
+            inputs:
+              Contents: |
+                **/*.psm1
+                **/*.psd1
+              TargetFolder: '$(Build.ArtifactStagingDirectory)'
+          - task: PublishBuildArtifacts@1
+            inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+              ArtifactName: 'drop'
+              publishLocation: 'Container'

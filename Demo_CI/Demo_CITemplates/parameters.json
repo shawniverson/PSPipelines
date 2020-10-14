@@ -1,0 +1,24 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "eastus"
+        },
+        "orgName": {
+            "value": "contoso"
+        },
+        "allowedRDPAddress": {
+            "value": "69.174.160.71/32"
+        },
+        "network": {
+            "value": "10.0.1.0/28"
+        },
+        "adminUsername": {
+            "value": "contosoadmin"
+        },
+        "adminPassword": {
+            "value": "ChangeMe2!"
+        }
+    }
+}
