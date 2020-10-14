@@ -1,4 +1,4 @@
-# ========= Azure DevOps ========= PowerShell ========= Pipelines =========
+# ===== Azure DevOps ===== PowerShell ===== Pipelines =====
 
 ## PowerShell Pipelines: Harnessing the Power of Azure DevOps to Deploy PowerShell
 
@@ -27,5 +27,5 @@ This repo is for anyone with the desire to apply CI/CD to PowerShell utilizing A
 
 Push this folder and its contents to Azure DevOps or a Github repository to use
 
-## Helpful Resources
+
 
