@@ -9,10 +9,10 @@
             "value": "contoso"
         },
         "allowedRDPAddress": {
-            "value": "69.174.160.71/32"
+            "value": ""
         },
         "network": {
-            "value": "10.0.1.0/28"
+            "value": "10.0.0.0/24"
         },
         "adminUsername": {
             "value": "contosoadmin"
