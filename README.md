@@ -2,7 +2,7 @@
 
 ## Demo_CI
 
-Microsoft's Demo (fixed up) to demonstrate Azure DevOps CI/CD with PowerShell
+Microsoft's demo (fixed up) to demonstrate Azure DevOps CI/CD with PowerShell
 
 ## PowerShellPipelines
 
