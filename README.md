@@ -22,6 +22,10 @@ Pester
 
 https://github.com/pester/Pester
 
+PSScriptAnalyzer
+
+https://github.com/PowerShell/PSScriptAnalyzer
+
 Azure PowerShell Task
 
 https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/deploy/azure-powershell?view=azure-devops
